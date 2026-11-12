@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athar | أثر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.75}
+    
+    nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.15);z-index:50;padding:14px 0}
+    .nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+    .logo{font-size:1.4rem;font-weight:800;color:#2dd4bf}
+    .logo span{color:#94a3b8;font-weight:600;font-size:0.95rem}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:#94a3b8;text-decoration:none;font-weight:600;font-size:0.9rem;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#2dd4bf}
+    
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 20px 60px;text-align:center}
+    .hero-box{max-width:620px;width:100%}
+    
+    .q-card{background:#1e293b;border:1px solid #334155;border-radius:20px;padding:36px 28px;transition:all .35s}
+    .q-card h1{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:800;margin-bottom:10px;color:#f1f5f9}
+    .q-card p{color:#94a3b8;margin-bottom:26px}
+    .choices{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .choice{background:#334155;border:none;color:#e2e8f0;padding:11px 26px;border-radius:40px;font-weight:600;cursor:pointer;transition:all .25s;font-size:0.95rem}
+    .choice:hover{background:#2dd4bf;color:#0f172a;transform:translateY(-2px)}
+    
+    .answer{display:none;animation:up .5s ease}
+    @keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    .answer p{font-size:1.1rem;color:#cbd5e1;margin:22px 0 28px;line-height:1.8}
+    .answer strong{color:#2dd4bf}
+    
+    .btn{display:inline-block;background:#2dd4bf;color:#0f172a;font-weight:700;padding:13px 30px;border-radius:40px;text-decoration:none;transition:transform .2s,box-shadow .2s}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(45,212,191,0.25)}
+    
+    .cards-wrap{max-width:1080px;margin:0 auto;padding:10px 20px 80px;display:none}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+    .card{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:26px;text-decoration:none;color:inherit;transition:all .3s}
+    .card:hover{border-color:#2dd4bf;transform:translateY(-5px)}
+    .card .ic{width:44px;height:44px;background:rgba(45,212,191,0.12);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#2dd4bf;margin-bottom:14px;font-size:1.15rem}
+    .card h3{font-size:1.15rem;margin-bottom:6px;color:#f1f5f9}
+    .card p{color:#94a3b8;font-size:0.92rem}
+    
+    footer{text-align:center;padding:30px;color:#64748b;font-size:0.85rem;border-top:1px solid #1e293b}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Athar <span>| أثر</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="climate.html">المناخ</a></li>
+        <li><a href="tech.html">التكنولوجيا</a></li>
+        <li><a href="quiz.html">اختبر نفسك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-box">
+      <div class="q-card" id="question">
+        <h1>هل تحب الصيف والحر في مصر؟</h1>
+        <p>جاوب بصراحة... مفيش إجابات صح أو غلط هنا</p>
+        <div class="choices">
+          <button class="choice" onclick="showAnswer()">أحبّه جدًا</button>
+          <button class="choice" onclick="showAnswer()">مش أوي بصراحة</button>
+        </div>
+      </div>
+
+      <div class="answer" id="answer">
+        <p>
+          سواء تحبه أو تهرب منه...<br>
+          الحقيقة إن الصيف بقى أطول وأحر مما كان عليه زمان.<br>
+          ومش مجرد إحساس شخصي، ده جزء من قصة اسمها <strong>التغيرات المناخية</strong>.
+        </p>
+        <a href="climate.html" class="btn">يلا نفهم القصة بهدوء</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="cards-wrap" id="cards">
+    <div class="cards">
+      <a href="climate.html" class="card">
+        <div class="ic"><i class="fa-solid fa-temperature-high"></i></div>
+        <h3>المناخ يتغير</h3>
+        <p>إيه اللي بيحصل للكوكب؟ وليه الصيف مختلف عن أيام جدودنا؟</p>
+      </a>
+      <a href="tech.html" class="card">
+        <div class="ic"><i class="fa-solid fa-microchip"></i></div>
+        <h3>التكنولوجيا في الصورة</h3>
+        <p>الموبايل والذكاء الاصطناعي ليهم دور... مش دايمًا سلبي بالمناسبة.</p>
+      </a>
+      <a href="quiz.html" class="card">
+        <div class="ic"><i class="fa-solid fa-brain"></i></div>
+        <h3>اختبر فهمك</h3>
+        <p>أسئلة خفيفة تكشف إذا كانت المعلومة وصلت ولا لسه بتلف.</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>Athar © 2026 — وعي خفيف... أثر واضح</footer>
+
+  <script>
+    function showAnswer() {
+      document.getElementById('question').style.display = 'none';
+      document.getElementById('answer').style.display = 'block';
+      document.getElementById('cards').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athar | المناخ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.75}
+    nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.15);z-index:50;padding:14px 0}
+    .nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+    .logo{font-size:1.4rem;font-weight:800;color:#2dd4bf}
+    .logo span{color:#94a3b8;font-weight:600;font-size:0.95rem}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:#94a3b8;text-decoration:none;font-weight:600;font-size:0.9rem;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#2dd4bf}
+    
+    .content{max-width:780px;margin:0 auto;padding:100px 20px 70px}
+    h1{font-size:1.9rem;font-weight:800;margin-bottom:8px;color:#f1f5f9}
+    .lead{color:#94a3b8;margin-bottom:36px}
+    
+    .box{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:26px;margin-bottom:20px}
+    .box h2{font-size:1.2rem;color:#2dd4bf;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+    .box p{color:#cbd5e1;margin-bottom:8px}
+    
+    .note{background:rgba(45,212,191,0.08);border-right:3px solid #2dd4bf;padding:14px 18px;border-radius:0 10px 10px 0;margin:16px 0;color:#e2e8f0;font-size:0.95rem}
+    
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:24px 0}
+    .stat{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;text-align:center}
+    .stat b{display:block;font-size:1.5rem;color:#2dd4bf;font-weight:800}
+    .stat span{font-size:0.85rem;color:#94a3b8}
+    
+    .btn{display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#2dd4bf;color:#0f172a;font-weight:700;padding:11px 24px;border-radius:40px;text-decoration:none;transition:transform .2s}
+    .btn:hover{transform:translateY(-2px)}
+    
+    footer{text-align:center;padding:30px;color:#64748b;font-size:0.85rem;border-top:1px solid #1e293b}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Athar <span>| أثر</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="climate.html" class="active">المناخ</a></li>
+        <li><a href="tech.html">التكنولوجيا</a></li>
+        <li><a href="quiz.html">اختبر نفسك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>المناخ يتغير... وإحنا مش متفرجين بس</h1>
+    <p class="lead">هحاول أشرحها بطريقة ما تخلّيكش تنام في النص.</p>
+
+    <div class="box">
+      <h2><i class="fa-solid fa-earth-americas"></i> إيه اللي بيحصل بالظبط؟</h2>
+      <p>الأرض ابتدت تحتفظ بحرارة أكتر من اللازم بسبب غازات زي ثاني أكسيد الكربون. النتيجة؟ الكوكب بيسخن ببطء، والصيف بيطول ويشتد.</p>
+      <div class="note">
+        تخيل إنك لابس طبقة إضافية من الملابس في عز الحر ومش قادر تشيلها. ده تقريبًا وضع الغلاف الجوي دلوقتي.
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <b>+1.1°</b>
+        <span>ارتفاع متوسط الحرارة منذ ما قبل الصناعة</span>
+      </div>
+      <div class="stat">
+        <b>أسرع</b>
+        <span>وتيرة التغير حاليًا مقارنة بآخر ألفي سنة</span>
+      </div>
+      <div class="stat">
+        <b>أطول</b>
+        <span>فصل الصيف في مناطق كتير من العالم</span>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2><i class="fa-solid fa-sun"></i> وليه يهمك أنت؟</h2>
+      <p>لأن الحر الشديد مش بس "مزعج". بيأثر على النوم، والتركيز، والزراعة، وحتى على رغبتك تخرج من البيت.</p>
+      <p>وأنت هتعيش معظم حياتك في السنوات الجاية... يعني القصة دي بتاعتك أكتر مما تتخيل.</p>
+    </div>
+
+    <div class="box">
+      <h2><i class="fa-solid fa-lightbulb"></i> الخلاصة السريعة</h2>
+      <p>التغير المناخي مش فيلم خيال علمي. هو مجموعة تغيرات بطيئة بتجمع وتبان في الطقس اللي بنعيشه كل يوم. كل ما فهمناه بدري، كل ما قدرنا نتصرف أحسن.</p>
+    </div>
+
+    <a href="tech.html" class="btn">دور التكنولوجيا في الموضوع <i class="fa-solid fa-arrow-left"></i></a>
+  </div>
+
+  <footer>Athar © 2026</footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athar | التكنولوجيا</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.75}
+    nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.15);z-index:50;padding:14px 0}
+    .nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+    .logo{font-size:1.4rem;font-weight:800;color:#2dd4bf}
+    .logo span{color:#94a3b8;font-weight:600;font-size:0.95rem}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:#94a3b8;text-decoration:none;font-weight:600;font-size:0.9rem;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#2dd4bf}
+    
+    .content{max-width:860px;margin:0 auto;padding:100px 20px 70px}
+    h1{font-size:1.9rem;font-weight:800;margin-bottom:8px}
+    .lead{color:#94a3b8;margin-bottom:32px}
+    
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:28px}
+    .card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:22px;transition:all .3s}
+    .card:hover{border-color:#2dd4bf;transform:translateY(-4px)}
+    .card .ic{width:40px;height:40px;background:rgba(45,212,191,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#2dd4bf;margin-bottom:12px}
+    .card h3{font-size:1.05rem;margin-bottom:6px;color:#f1f5f9}
+    .card p{color:#94a3b8;font-size:0.9rem}
+    
+    .box{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:24px;margin-bottom:18px}
+    .box h2{font-size:1.15rem;color:#2dd4bf;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .box ul{padding-right:18px;color:#cbd5e1}
+    .box li{margin-bottom:7px}
+    
+    .note{background:rgba(45,212,191,0.08);border-right:3px solid #2dd4bf;padding:13px 16px;border-radius:0 10px 10px 0;margin:14px 0;color:#e2e8f0;font-size:0.93rem}
+    
+    .btn{display:inline-flex;align-items:center;gap:8px;background:#2dd4bf;color:#0f172a;font-weight:700;padding:11px 24px;border-radius:40px;text-decoration:none;transition:transform .2s}
+    .btn:hover{transform:translateY(-2px)}
+    
+    footer{text-align:center;padding:30px;color:#64748b;font-size:0.85rem;border-top:1px solid #1e293b}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Athar <span>| أثر</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="climate.html">المناخ</a></li>
+        <li><a href="tech.html" class="active">التكنولوجيا</a></li>
+        <li><a href="quiz.html">اختبر نفسك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>التكنولوجيا... مش بريئة أوي</h1>
+    <p class="lead">ولا هي الشر المطلق كمان. القصة أعقد شوية.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="ic"><i class="fa-solid fa-server"></i></div>
+        <h3>مراكز البيانات</h3>
+        <p>كل بحث أو فيديو أو محادثة مع ذكاء اصطناعي وراه سيرفرات بتستهلك كهربا وتطلع حرارة.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>أجهزتنا</h3>
+        <p>من المصنع لحد ما نرميها، الموبايل واللابتوب ليهم تكلفة بيئية مش هينة.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><i class="fa-solid fa-solar-panel"></i></div>
+        <h3>الطاقة النظيفة</h3>
+        <p>نفس التكنولوجيا بتساعدنا نولّد كهربا من الشمس والرياح بكفاءة أحسن بكتير.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><i class="fa-solid fa-laptop-code"></i></div>
+        <h3>الرقمنة</h3>
+        <p>الشغل والدراسة عن بُعد ممكن يقللوا التنقل... لو استخدمناهم بوعي مش بعشوائية.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2><i class="fa-solid fa-scale-balanced"></i> الفكرة ببساطة</h2>
+      <div class="note">
+        التكنولوجيا زي العربية: لو سقتها بتهور هتخلص البنزين بسرعة وتتلف. لو سقتها بهدوء هتوصل أبعد وتوفر.
+      </div>
+      <p>الموضوع مش إننا نلغي التكنولوجيا، الموضوع إننا نستخدمها بذكاء ونخليها جزء من الحل.</p>
+    </div>
+
+    <div class="box">
+      <h2><i class="fa-solid fa-hand-holding-heart"></i> إيه اللي تقدر تعمله من غير ما تتعب؟</h2>
+      <ul>
+        <li>خلي الجهاز يعيش أطول... متستبدلوش كل سنة عشان موديل جديد بس.</li>
+        <li>اطفِ الشواحن والأجهزة اللي مش بتستخدمها.</li>
+        <li>استخدم الإنترنت عشان تتعلم وتنشر معلومة مفيدة، مش بس تتفرج.</li>
+        <li>لما ترمي جهاز قديم، دور على طريقة إعادة تدوير محترمة.</li>
+      </ul>
+    </div>
+
+    <a href="quiz.html" class="btn">يلا نختبر المعلومات <i class="fa-solid fa-arrow-left"></i></a>
+  </div>
+
+  <footer>Athar © 2026</footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athar | اختبر نفسك</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:#0f172a;color:#e2e8f0;line-height:1.7}
+    nav{position:fixed;top:0;width:100%;background:rgba(15,23,42,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(45,212,191,0.15);z-index:50;padding:14px 0}
+    .nav-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px}
+    .logo{font-size:1.4rem;font-weight:800;color:#2dd4bf}
+    .logo span{color:#94a3b8;font-weight:600;font-size:0.95rem}
+    .nav-links{display:flex;gap:24px;list-style:none}
+    .nav-links a{color:#94a3b8;text-decoration:none;font-weight:600;font-size:0.9rem;transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:#2dd4bf}
+    
+    .content{max-width:600px;margin:0 auto;padding:100px 20px 70px}
+    h1{font-size:1.7rem;font-weight:800;text-align:center;margin-bottom:6px}
+    .lead{text-align:center;color:#94a3b8;margin-bottom:32px}
+    
+    .quiz{background:#1e293b;border:1px solid #334155;border-radius:18px;padding:28px}
+    .q-num{font-size:0.85rem;color:#2dd4bf;font-weight:600;margin-bottom:6px}
+    .question{font-size:1.1rem;font-weight:600;margin-bottom:20px}
+    .options{display:flex;flex-direction:column;gap:10px}
+    .option{background:#334155;border:1px solid transparent;border-radius:12px;padding:13px 15px;cursor:pointer;transition:all .2s;font-size:0.93rem}
+    .option:hover{border-color:#2dd4bf}
+    .option.selected{border-color:#2dd4bf;background:rgba(45,212,191,0.12)}
+    
+    .btn{width:100%;background:#2dd4bf;color:#0f172a;font-weight:700;padding:13px;border:none;border-radius:12px;font-size:1rem;cursor:pointer;margin-top:18px;transition:transform .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+    
+    .result{text-align:center;display:none;padding:10px 0}
+    .result .score{font-size:3rem;font-weight:800;color:#2dd4bf;margin:10px 0}
+    .result .msg{color:#94a3b8;margin-bottom:24px}
+    
+    footer{text-align:center;padding:30px;color:#64748b;font-size:0.85rem;border-top:1px solid #1e293b}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Athar <span>| أثر</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html">الرئيسية</a></li>
+        <li><a href="climate.html">المناخ</a></li>
+        <li><a href="tech.html">التكنولوجيا</a></li>
+        <li><a href="quiz.html" class="active">اختبر نفسك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <h1>اختبر معلوماتك</h1>
+    <p class="lead">خمس أسئلة خفيفة... شوف أنت فاهم لحد فين</p>
+
+    <div id="quiz-area"></div>
+
+    <div class="result" id="result">
+      <div style="font-size:2.2rem;color:#2dd4bf;margin-bottom:6px"><i class="fa-solid fa-trophy"></i></div>
+      <div class="score" id="score">0/5</div>
+      <p class="msg" id="msg"></p>
+      <button class="btn" onclick="location.reload()">حاول تاني</button>
+      <a href="index.html" class="btn" style="display:block;margin-top:10px;background:#334155;color:#e2e8f0;text-decoration:none;text-align:center">الصفحة الرئيسية</a>
+    </div>
+  </div>
+
+  <footer>Athar © 2026</footer>
+
+  <script>
+    const questions = [
+      {
+        q: "إيه الغاز الأساسي المسؤول عن معظم الاحتباس الحراري الناتج عن البشر؟",
+        options: ["الأكسجين", "ثاني أكسيد الكربون", "النيتروجين", "الهيليوم"],
+        correct: 1
+      },
+      {
+        q: "التغير المناخي بيخلي الصيف في مصر غالبًا...",
+        options: ["أقصر وأبرد", "أطول وأسخن", "من غير أي تغيير ملحوظ", "يمطر طول الوقت"],
+        correct: 1
+      },
+      {
+        q: "مراكز البيانات ليها علاقة بالمناخ لأن...",
+        options: ["بتبرد الجو", "بتستهلك كميات كبيرة من الكهرباء", "بتزرع أشجار", "مفيش علاقة أصلًا"],
+        correct: 1
+      },
+      {
+        q: "إيه التصرف الأذكى مع الأجهزة الإلكترونية؟",
+        options: ["نبدلها كل سنة", "نطول عمرها ونحاول نعيد تدويرها", "نرميها في أقرب صندوق قمامة", "نشتري أكتر عدد ممكن"],
+        correct: 1
+      },
+      {
+        q: "التكنولوجيا ممكن تساعد في حل المشكلة عن طريق...",
+        options: ["تجاهل الموضوع خالص", "تطوير الطاقة المتجددة وتحسين الكفاءة", "زيادة استهلاك الكهرباء بس", "إيقاف الإنترنت تمامًا"],
+        correct: 1
+      }
+    ];
+
+    let current = 0;
+    let score = 0;
+    let selected = null;
+    const area = document.getElementById('quiz-area');
+
+    function render() {
+      if (current >= questions.length) {
+        showResult();
+        return;
+      }
+      const q = questions[current];
+      area.innerHTML = `
+        <div class="quiz">
+          <div class="q-num">السؤال ${current + 1} من ${questions.length}</div>
+          <div class="question">${q.q}</div>
+          <div class="options">
+            \( {q.options.map((opt, i) => `<div class="option" onclick="select(this, \){i})">${opt}</div>`).join('')}
+          </div>
+          <button class="btn" id="nextBtn" onclick="next()" disabled>التالي</button>
+        </div>
+      `;
+      selected = null;
+    }
+
+    function select(el, index) {
+      document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selected = index;
+      document.getElementById('nextBtn').disabled = false;
+    }
+
+    function next() {
+      if (selected === questions[current].correct) score++;
+      current++;
+      render();
+    }
+
+    function showResult() {
+      area.style.display = 'none';
+      document.getElementById('result').style.display = 'block';
+      document.getElementById('score').textContent = score + ' / 5';
+      let m = '';
+      if (score === 5) m = 'تمام أوي. واضح إنك مركز.';
+      else if (score >= 3) m = 'كويس. في أساس محترم، كمّل قراءة الصفحات.';
+      else m = 'مفيش مشكلة. راجع الصفحات وجرب تاني بهدوء.';
+      document.getElementById('msg').textContent = m;
+    }
+
+    render();
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Athar | أثر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Cairo',sans-serif;background:#0c0a09;color:#f5f5f4;line-height:1.7}
+    
+    nav{position:fixed;top:0;width:100%;background:rgba(12,10,9,0.9);backdrop-filter:blur(14px);border-bottom:1px solid rgba(251,146,60,0.15);z-index:100;padding:15px 0}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:0 24px}
+    .logo{font-size:1.45rem;font-weight:800;color:#fb923c;letter-spacing:-0.5px}
+    .logo span{color:#f5f5f4}
+    .nav-links{display:flex;gap:26px;list-style:none}
+    .nav-links a{color:#a8a29e;text-decoration:none;font-weight:600;font-size:0.92rem;transition:color .25s}
+    .nav-links a:hover,.nav-links a.active{color:#fb923c}
+    
+    /* Hero with question */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 24px 60px;position:relative}
+    .hero-content{max-width:680px}
+    .question-box{background:#1c1917;border:1px solid #292524;border-radius:24px;padding:40px 32px;margin-bottom:32px;transition:all .4s}
+    .question-box h1{font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:800;margin-bottom:12px;color:#fafaf9}
+    .question-box p{color:#a8a29e;font-size:1.05rem}
+    .choices{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+    .choice-btn{background:#292524;border:1px solid #44403c;color:#e7e5e4;padding:12px 28px;border-radius:50px;font-weight:600;cursor:pointer;transition:all .25s;font-size:0.95rem}
+    .choice-btn:hover{background:#fb923c;border-color:#fb923c;color:#0c0a09;transform:translateY(-2px)}
+    
+    .reveal{display:none;animation:fadeUp .6s ease}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    
+    .intro-text{font-size:1.15rem;color:#d6d3d1;margin:24px 0 36px;line-height:1.8}
+    .btn-main{display:inline-block;background:linear-gradient(135deg,#f97316,#fb923c);color:#0c0a09;font-weight:700;padding:14px 34px;border-radius:50px;text-decoration:none;font-size:1rem;transition:transform .25s,box-shadow .25s}
+    .btn-main:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(249,115,22,0.3)}
+    
+    /* Cards */
+    .section{max-width:1100px;margin:0 auto;padding:20px 24px 90px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+    .card{background:#1c1917;border:1px solid #292524;border-radius:20px;padding:30px;transition:all .3s;text-decoration:none;color:inherit}
+    .card:hover{border-color:#fb923c;transform:translateY(-6px);box-shadow:0 16px 36px rgba(0,0,0,0.35)}
+    .card .icon{width:48px;height:48px;background:rgba(249,115,22,0.12);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.3rem;color:#fb923c}
+    .card h3{font-size:1.2rem;margin-bottom:8px;color:#fafaf9}
+    .card p{color:#a8a29e;font-size:0.93rem}
+    
+    footer{text-align:center;padding:36px;color:#78716c;font-size:0.88rem;border-top:1px solid #1c1917}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="logo">Athar <span>| أثر</span></div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">الرئيسية</a></li>
+        <li><a href="climate.html">المناخ</a></li>
+        <li><a href="tech.html">التكنولوجيا</a></li>
+        <li><a href="quiz.html">اختبر نفسك</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="question-box" id="qBox">
+        <h1>هل بتحب الصيف والحر في مصر؟</h1>
+        <p>الإجابة الصريحة... مش مهم تكون بتحبه أو لأ</p>
+        <div class="choices">
+          <button class="choice-btn" onclick="answer(true)">أيوه بحبه</button>
+          <button class="choice-btn" onclick="answer(false)">لا مش قوي</button>
+        </div>
+      </div>
+
+      <div class="reveal" id="reveal">
+        <p class="intro-text">
+          سواء بتحب الحر أو بتكرهه، الحقيقة إن الصيف بقى أطول وأسخن من زمان.<br>
+          مش مجرد إحساس... ده جزء من قصة أكبر اسمها <strong style="color:#fb923c">التغيرات المناخية</strong>.
+        </p>
+        <a href="climate.html" class="btn-main">خلينا نفهم القصة كاملة</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cardsSection" style="display:none">
+    <div class="cards">
+      <a href="climate.html" class="card">
+        <div class="icon"><i class="fa-solid fa-temperature-high"></i></div>
+        <h3>المناخ بيتغير</h3>
+        <p>إيه اللي بيحصل للكوكب؟ وليه الصيف بقى مختلف عن أيام جدودنا؟</p>
+      </a>
+      <a href="tech.html" class="card">
+        <div class="icon"><i class="fa-solid fa-microchip"></i></div>
+        <h3>التكنولوجيا طرف في القصة</h3>
+        <p>الموبايل والسوشيال والذكاء الاصطناعي ليهم دور... مش دايمًا سلبي.</p>
+      </a>
+      <a href="quiz.html" class="card">
+        <div class="icon"><i class="fa-solid fa-brain"></i></div>
+        <h3>اختبر فهمك</h3>
+        <p>كويز خفيف يساعدك تتأكد إن المعلومة وصلت.</p>
+      </a>
+    </div>
+  </section>
+
+  <footer>Athar © 2026 — وعي بسيط... أثر حقيقي</footer>
+
+  <script>
+    function answer(love) {
+      document.getElementById('qBox').style.display = 'none';
+      document.getElementById('reveal').style.display = 'block';
+      document.getElementById('cardsSection').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
